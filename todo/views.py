@@ -4,5 +4,6 @@ from .models import Task
 
 # Create your views here.
 
-def TaskList(ListView):
-    model = Task
+class TaskList(ListView):
+    model  = Task
+    context_object_name = 'tasks'
