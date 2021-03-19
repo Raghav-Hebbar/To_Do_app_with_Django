@@ -35,6 +35,7 @@ class RegisterPage(FormView):
         if self.request.user.is_authenticated:
             return redirect('tasks')
         return super(RegisterPage, self.get(*args, **kwargs))
+
 class TaskList(LoginRequiredMixin, ListView):
     model  = Task
     context_object_name = 'tasks'
@@ -43,8 +44,16 @@ class TaskList(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         context['tasks'] = context['tasks'].filter(user= self.request.user)
         context['count'] = context['tasks'].filter(complete = False).count()
+        
+        search_input = self.request.GET.get('search-area') or ''
+        if search_input:
+            context['tasks'] = context['tasks'].filter(title__icontains = search_input)
+        
+        context['search_input'] = search_input
+        
         return context
 
+        
 
 class TaskDetail(LoginRequiredMixin, DetailView):
     model = Task
