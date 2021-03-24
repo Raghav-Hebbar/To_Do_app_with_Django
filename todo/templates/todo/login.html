@@ -1,5 +1,11 @@
 {% extends 'todo/main.html' %}
 {% block content %}
+{% load bootstrap4 %}
+
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{% bootstrap_messages %}
 
 <div class="header-bar">
     <h1>login</h1>
@@ -8,8 +14,12 @@
 <div card-body>
     <form method= "POST" action="">
         {% csrf_token %}
-        {{form.as_p}}
-        <input class="button" type="submit" value="Login">
+        {% bootstrap_form form %}
+        {% buttons %}
+        <button type="submit" class="btn btn-primary">
+            Login
+        </button>
+        {% endbuttons %}
     </form>    
     <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
 </div>
