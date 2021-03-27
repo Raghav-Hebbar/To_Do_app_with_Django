@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'todo.apps.TodoConfig',
-    "bootstrap4",
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -123,3 +123,8 @@ LOGIN_URL = 'login'
 STATIC_URL = 'todo/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+STATICFILES_DIRS = [
+    
+    'static/style.css',
+]
