@@ -1,6 +1,9 @@
 {% extends 'todo/main.html' %}
 {% block content %}
 
+{% load django_bootstrap_icons %}
+{% include_bootstrap_icons %}
+
 <div class="header-bar">
     <div>
         <h1>Hello {{request.user|title}}</h1>
@@ -30,13 +33,14 @@
             <div class="task-complete-icon"></div>
                 <i><s><a href="{% url 'task-update' task.id %}">{{task}}</a></s></i>
         </div>
-        <a class="delete-link" href="{% url 'task-delete' task.id %}"> &#215;</a>
+
+        <a class="delete-link" href="{% url 'task-delete' task.id %}">{% bs_icon 'bi bi-trash' extra_classes='text-danger' %}</a>
         {% else %}
         <div class="task-title">
             <div class="task-incomplete-icon"></div>
             <a href="{% url 'task-update' task.id %}">{{task}}</a>
         </div>
-        <a class="delete-link" href="{% url 'task-delete' task.id %}"> &#215;</a>
+        <a class="delete-link" href="{% url 'task-delete' task.id %}"> {% bs_icon 'bi bi-trash' extra_classes='text-danger' %}</a>
         {% endif %}
     </div>
     {% empty %}

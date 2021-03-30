@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '=6l!o%i#471pqognc&4@&g)_wc8hnp)ug7lkymkoexbyroks!&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['to-do-app-django-raghav.herokuapp.com','127.0.0.1']
 
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'todo.apps.TodoConfig',
     'bootstrap4',
+    'django_bootstrap_icons',
 ]
 
 MIDDLEWARE = [
@@ -122,9 +123,8 @@ LOGIN_URL = 'login'
 
 STATIC_URL = 'todo/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 STATICFILES_DIRS = [
-    
-    'static/style.css',
+    BASE_DIR / "static",
+    '/todo/static',
 ]

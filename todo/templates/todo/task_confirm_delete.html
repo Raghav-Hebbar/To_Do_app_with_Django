@@ -5,8 +5,10 @@
 
 {% bootstrap_css %}
 {% bootstrap_javascript jquery='full' %}
-
 {% bootstrap_messages %}
+
+{% load django_bootstrap_icons %}
+{% include_bootstrap_icons %}
 
 <div class="header-bar">
     <a href="{% url 'tasks' %}">&#8592; Go back</a>
@@ -15,6 +17,7 @@
 <div class="card-body">
     <form method ="POST" action="">
         {% csrf_token %}
+        <p> {% bs_icon 'bi bi-exclamation-triangle-fill' extra_classes='text-danger' %} Warning! </p>
         <P>Are you sure you want to delete this task ? {{task}}</P>
         <input class="btn btn-primary" type="submit" value="delete"/>
     </form>
